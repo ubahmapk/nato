@@ -2,6 +2,8 @@
 
 Convert text to the NATO phonetic alphabet from the command line.
 
+(Blatently vibe-coded with Claude)
+
 [![CI](https://github.com/ubahmapk/nato/actions/workflows/ci.yml/badge.svg)](https://github.com/ubahmapk/nato/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
