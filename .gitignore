@@ -4,3 +4,9 @@ web/pkg/
 web/node_modules/
 web/build/
 web/.svelte-kit/
+
+# Flutter build artifacts
+flutter/.dart_tool/
+flutter/build/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies

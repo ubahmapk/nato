@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/nato", "crates/nato-cli", "crates/nato-wasm"]
+members = ["crates/nato", "crates/nato-cli", "crates/nato-wasm", "crates/nato-flutter"]
 resolver = "2"
 
 # Size-optimize only the WASM crate; CLI keeps default release settings.
