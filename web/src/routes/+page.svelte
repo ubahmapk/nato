@@ -78,9 +78,11 @@
 
 		<div class="output-block">
 			<pre class="output-text">{formattedOutput}</pre>
-			<button class="copy-btn" class:copied onclick={copyToClipboard}>
-				{copied ? '✓ Copied' : 'Copy'}
-			</button>
+			<div class="output-actions">
+				<button class="copy-btn" class:copied onclick={copyToClipboard}>
+					{copied ? '✓ Copied' : 'Copy'}
+				</button>
+			</div>
 		</div>
 	{/if}
 
@@ -199,7 +201,6 @@
 
 	/* Output */
 	.output-block {
-		position: relative;
 		margin-top: 0.5rem;
 	}
 
@@ -217,10 +218,13 @@
 		min-height: 3rem;
 	}
 
+	.output-actions {
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 0.4rem;
+	}
+
 	.copy-btn {
-		position: absolute;
-		top: 0.5rem;
-		right: 0.5rem;
 		padding: 0.2rem 0.65rem;
 		font-size: 0.8rem;
 		border: 1px solid #ccc;
