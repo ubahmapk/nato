@@ -1,3 +1,7 @@
 [workspace]
-members = ["crates/nato", "crates/nato-cli"]
+members = ["crates/nato", "crates/nato-cli", "crates/nato-wasm"]
 resolver = "2"
+
+# Size-optimize only the WASM crate; CLI keeps default release settings.
+[profile.release.package.nato-wasm]
+opt-level = "s"
