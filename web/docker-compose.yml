@@ -8,9 +8,16 @@ services:
       - "80:80"
       - "443:443"
     environment:
-      # Set SITE_DOMAIN to your public hostname to enable Let's Encrypt TLS.
+      # Set SITE_DOMAIN to your internal hostname to enable Let's Encrypt TLS via DNS-01.
       # Omit (or set to localhost) for local testing with Caddy's internal CA.
       - SITE_DOMAIN=${SITE_DOMAIN:-localhost}
+      # AWS credentials for Route53 DNS-01 challenge. Required when SITE_DOMAIN is set.
+      # Prefer IAM role on EC2/ECS over static keys. Never commit these values.
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      # Optional: set to skip ListHostedZonesByName and allow a stricter IAM policy.
+      # - AWS_HOSTED_ZONE_ID=${AWS_HOSTED_ZONE_ID}
     volumes:
       - caddy_data:/data       # certificate store — never delete this volume
       - caddy_config:/config   # Caddy runtime config cache

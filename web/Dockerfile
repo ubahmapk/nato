@@ -33,9 +33,16 @@ COPY web/ ./
 
 RUN bun run build
 
-# ── Stage 3: Caddy serves static files + manages TLS ────────────────────────
+# ── Stage 3: Build custom Caddy with Route53 DNS-01 plugin ───────────────────
+FROM caddy:builder AS caddy-builder
+
+RUN xcaddy build \
+    --with github.com/caddy-dns/route53
+
+# ── Stage 4: Caddy serves static files + manages TLS ────────────────────────
 FROM caddy:alpine AS runtime
 
+COPY --from=caddy-builder /usr/bin/caddy /usr/bin/caddy
 COPY --from=web-builder /app/build /usr/share/caddy
 COPY web/Caddyfile /etc/caddy/Caddyfile
 
