@@ -1,0 +1,14 @@
+[package]
+name = "nato"
+version = "0.1.0"
+edition = "2021"
+description = "Convert text to NATO phonetic alphabet"
+authors = ["ubahmapk <ubahmapk@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/ubahmapk/nato"
+readme = "README.md"
+keywords = ["nato", "phonetic", "alphabet", "cli"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
