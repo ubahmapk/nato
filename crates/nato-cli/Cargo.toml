@@ -1,0 +1,12 @@
+[package]
+name = "nato-cli"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "nato"
+path = "src/main.rs"
+
+[dependencies]
+nato = { path = "../nato" }
+clap = { version = "4", features = ["derive"] }
