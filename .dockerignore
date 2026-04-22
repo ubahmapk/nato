@@ -1,0 +1,17 @@
+# Git history — never needed in a build context
+.git/
+
+# Rust build artifacts — large and not needed (Dockerfile rebuilds from source)
+target/
+
+# Web build artifacts and local dependencies
+web/node_modules/
+web/pkg/
+web/build/
+web/.svelte-kit/
+
+# Flutter — not involved in the web build
+flutter/
+
+# Local tooling state
+.claude/

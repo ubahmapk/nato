@@ -1,0 +1,28 @@
+{$SITE_DOMAIN:localhost} {
+	root * /usr/share/caddy
+	file_server
+
+	header {
+		Content-Security-Policy "default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; font-src 'self'; connect-src 'self'; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		Permissions-Policy "geolocation=(), microphone=(), camera=()"
+		-Server
+	}
+
+	# Content-hashed assets (SvelteKit appends hash to filenames): cache forever.
+	@hashed_assets path_regexp \.(js|css|wasm|png|ico|svg)$
+	header @hashed_assets Cache-Control "public, max-age=31536000, immutable"
+
+	# index.html and SPA routes rewritten to it: never cache.
+	@not_hashed_assets {
+		not path_regexp \.(js|css|wasm|png|ico|svg)$
+	}
+	header @not_hashed_assets Cache-Control "no-cache, no-store, must-revalidate"
+
+	encode gzip
+
+	# SPA fallback: unknown routes serve index.html (client-side router takes over).
+	try_files {path} /index.html
+}

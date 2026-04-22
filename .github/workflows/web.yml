@@ -1,0 +1,58 @@
+name: Web
+
+on:
+  push:
+    paths:
+      - 'web/**'
+      - 'crates/nato/**'
+      - 'crates/nato-wasm/**'
+      - '.github/workflows/web.yml'
+  pull_request:
+    paths:
+      - 'web/**'
+      - 'crates/nato/**'
+      - 'crates/nato-wasm/**'
+      - '.github/workflows/web.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Rust artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target/
+          key: ${{ runner.os }}-cargo-wasm-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-wasm-
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack --locked
+
+      - name: Build WASM package
+        run: |
+          cd crates/nato-wasm
+          wasm-pack build --target web --out-dir ../../web/pkg
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install JS dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
+
+      - name: Build Svelte app
+        working-directory: web
+        run: bun run build
+
+      - name: Build Docker image
+        run: docker build -f web/Dockerfile -t nato-web .

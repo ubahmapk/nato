@@ -1,0 +1,21 @@
+services:
+  nato-web:
+    build:
+      context: ..
+      dockerfile: web/Dockerfile
+    image: nato-web
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # Set SITE_DOMAIN to your public hostname to enable Let's Encrypt TLS.
+      # Omit (or set to localhost) for local testing with Caddy's internal CA.
+      - SITE_DOMAIN=${SITE_DOMAIN:-localhost}
+    volumes:
+      - caddy_data:/data       # certificate store — never delete this volume
+      - caddy_config:/config   # Caddy runtime config cache
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:
