@@ -8,7 +8,7 @@
 # - Rename the current [Unreleased] to the versioned heading
 [[pre-release-replacements]]
 file    = "../../CHANGELOG.md"
-search  = "<!-- next-header -->\n## \\[Unreleased\\]"
+search  = "<!-- next-header -->\n\n?## \\[Unreleased\\]"
 replace = "<!-- next-header -->\n## [Unreleased]\n\n## [{{version}}] - {{date}}"
 exactly = 1
 
@@ -18,6 +18,6 @@ exactly = 1
 # - Add the new [version] footer link above the existing entries
 [[pre-release-replacements]]
 file    = "../../CHANGELOG.md"
-search  = "<!-- next-url -->\n\\[Unreleased\\]: https://github\\.com/ubahmapk/nato/compare/.*\\.\\.\\.HEAD"
+search  = "<!-- next-url -->\n\n?\\[Unreleased\\]: https://github\\.com/ubahmapk/nato/compare/.*\\.\\.\\.HEAD"
 replace = "<!-- next-url -->\n[Unreleased]: https://github.com/ubahmapk/nato/compare/{{tag_name}}...HEAD\n[{{version}}]: https://github.com/ubahmapk/nato/releases/tag/{{tag_name}}"
 exactly = 1
