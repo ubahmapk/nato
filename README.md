@@ -37,11 +37,40 @@ cd nato
 cargo install --path .
 ```
 
-**From crates.io (once published):**
+## Web interface (Docker)
+
+A pre-built image is published to the GitHub Container Registry and serves the
+web interface (Svelte + WASM) via Caddy.
+
+**Local testing** — no domain or TLS configuration required:
 
 ```sh
-cargo install nato-cli
+docker run -p 8080:80 ghcr.io/ubahmapk/nato
 ```
+
+Open http://localhost:8080. Caddy automatically uses its internal CA.
+
+**Production deployment** — custom domain with Let's Encrypt TLS via Route53
+DNS-01:
+
+```sh
+SITE_DOMAIN=nato.example.com \
+AWS_ACCESS_KEY_ID=AKIA... \
+AWS_SECRET_ACCESS_KEY=... \
+AWS_REGION=us-east-1 \
+docker compose -f web/docker-compose.yml up -d
+```
+
+| Variable | Required | Description |
+|---|---|---|
+| `SITE_DOMAIN` | Yes | Public hostname; omit or set to `localhost` for local testing |
+| `AWS_ACCESS_KEY_ID` | Yes (prod) | IAM key for Route53 DNS-01 challenge |
+| `AWS_SECRET_ACCESS_KEY` | Yes (prod) | IAM secret |
+| `AWS_REGION` | No | Defaults to `us-east-1` |
+| `AWS_HOSTED_ZONE_ID` | No | Set to allow a stricter IAM policy (skips `ListHostedZonesByName`) |
+
+The `caddy_data` volume holds TLS certificates — do not delete it between
+restarts or Let's Encrypt rate limits may apply.
 
 ## Usage
 
@@ -74,7 +103,7 @@ output however they need.
 
 - [ ] Additional output modes (`--format json`, `--format compact`)
 - [ ] Multi-line stdin support (process all lines, not just the first)
-- [ ] Web interface (WASM or small HTTP server)
+- [x] Web interface (WASM or small HTTP server)
 - [ ] GUI front-end
 - [ ] Full punctuation support (ITU/ICAO special characters)
 
