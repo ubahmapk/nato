@@ -8,6 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- next-header -->
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-11
+
+### Added
+- Dynamic CSP hash calculation: script hash is now recomputed on every build, eliminating manual updates after each frontend change
+
+### Fixed
+- Corrected 308 redirect when running on localhost
+
+### Changed
+- GitHub Actions upgraded: `actions/checkout` v4→v6 and `actions/cache` v4→v5 for Node.js 24 compatibility ahead of June 2 mandatory cutover
+- Docker image builds now only trigger on tagged pushes, not on every push to `main`
+- Updated installation and usage instructions in documentation
+
+### Removed
+- Defunct `Caddyfile` removed from repository
+
 ## [0.1.1] - 2026-05-11
 
 ### Added
@@ -39,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   convention, space-skipping, empty input, and unknown characters.
 
 <!-- next-url -->
-[Unreleased]: https://github.com/ubahmapk/nato/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/ubahmapk/nato/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/ubahmapk/nato/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ubahmapk/nato/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ubahmapk/nato/releases/tag/v0.1.0
