@@ -23,6 +23,10 @@ O - Oscar
 Digits use the ICAO standard words (0 → Zero, 9 → Niner). Spaces are silently
 skipped; any other unrecognised character prints `(no NATO equivalent)`.
 
+## Why
+
+For fun.
+
 ## Install
 
 **From source:**
