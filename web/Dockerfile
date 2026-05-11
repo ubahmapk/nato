@@ -32,6 +32,7 @@ RUN bun install --frozen-lockfile
 COPY web/ ./
 
 RUN bun run build
+RUN bun scripts/hash-caddyfile.js
 
 # ── Stage 3: Build custom Caddy with Route53 DNS-01 plugin ───────────────────
 FROM caddy:builder AS caddy-builder
@@ -49,7 +50,7 @@ LABEL org.opencontainers.image.licenses="MIT"
 
 COPY --from=caddy-builder /usr/bin/caddy /usr/bin/caddy
 COPY --from=web-builder /app/build /usr/share/caddy
-COPY web/Caddyfile /etc/caddy/Caddyfile
+COPY --from=web-builder /app/Caddyfile /etc/caddy/Caddyfile
 
 EXPOSE 80 443
 
