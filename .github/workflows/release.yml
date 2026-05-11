@@ -30,12 +30,6 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-release-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Publish nato
-        run: cargo publish -p nato --locked
-        env:
-          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
-
-      # nato-cli depends on nato — retry loop handles crates.io index propagation (~30–90s)
       - name: Publish nato-cli
         run: |
           for i in 1 2 3 4 5; do
