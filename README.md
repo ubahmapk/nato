@@ -40,7 +40,7 @@ cargo install --path .
 **From crates.io (once published):**
 
 ```sh
-cargo install nato
+cargo install nato-cli
 ```
 
 ## Usage
