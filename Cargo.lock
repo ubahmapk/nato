@@ -133,24 +133,20 @@ dependencies = [
 ]
 
 [[package]]
-name = "nato"
-version = "0.1.1"
-
-[[package]]
 name = "nato-cli"
 version = "0.1.1"
 dependencies = [
  "clap",
- "nato",
+ "ubahmapk-nato",
 ]
 
 [[package]]
 name = "nato-wasm"
 version = "0.1.1"
 dependencies = [
- "nato",
  "serde",
  "serde-wasm-bindgen",
+ "ubahmapk-nato",
  "wasm-bindgen",
 ]
 
@@ -247,6 +243,10 @@ dependencies = [
  "quote",
  "unicode-ident",
 ]
+
+[[package]]
+name = "ubahmapk-nato"
+version = "0.1.1"
 
 [[package]]
 name = "unicode-ident"

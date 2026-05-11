@@ -1,11 +1,10 @@
 [package]
-name              = "nato"
+name              = "ubahmapk-nato"
 version.workspace = true
 edition.workspace = true
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
-publish     = false
 description = "Convert text to NATO phonetic alphabet"
 readme      = "../../README.md"
 keywords    = ["nato", "phonetic", "alphabet", "cli"]
