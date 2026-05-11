@@ -2,12 +2,8 @@ name: Web
 
 on:
   push:
-    paths:
-      - 'web/**'
-      - 'crates/nato/**'
-      - 'crates/nato-wasm/**'
-      - '.github/workflows/web.yml'
-  pull_request:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
     paths:
       - 'web/**'
       - 'crates/nato/**'
