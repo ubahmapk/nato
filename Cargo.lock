@@ -134,7 +134,7 @@ dependencies = [
 
 [[package]]
 name = "nato-cli"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "clap",
  "ubahmapk-nato",
@@ -142,7 +142,7 @@ dependencies = [
 
 [[package]]
 name = "nato-wasm"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "serde",
  "serde-wasm-bindgen",
@@ -246,7 +246,7 @@ dependencies = [
 
 [[package]]
 name = "ubahmapk-nato"
-version = "0.1.1"
+version = "0.1.2"
 
 [[package]]
 name = "unicode-ident"
