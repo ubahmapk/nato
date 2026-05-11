@@ -1,12 +1,18 @@
 [package]
-name = "nato-cli"
-version = "0.1.0"
-edition = "2021"
+name              = "nato-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Command-line interface for converting text to the NATO phonetic alphabet"
+keywords    = ["nato", "phonetic", "alphabet", "cli"]
+categories  = ["command-line-utilities"]
 
 [[bin]]
 name = "nato"
 path = "src/main.rs"
 
 [dependencies]
-nato = { path = "../nato" }
+nato.workspace = true
 clap = { version = "4", features = ["derive"] }

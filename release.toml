@@ -1,0 +1,17 @@
+# All workspace crates share one version number
+shared-version      = true
+consolidate-commits = true
+
+# Tag format: v0.2.0 (no crate-name prefix for non-root crates)
+tag-name    = "v{{version}}"
+tag-message = "Release version {{version}}"
+
+# Remote is "upstream", not "origin"
+push-remote = "upstream"
+
+# Publishing is handled by CI on tag push — not locally
+publish = false
+
+# CHANGELOG replacements live in crates/nato/release.toml only.
+# Paths in pre-release-replacements resolve relative to each crate directory,
+# so putting them here would run them 3 times (once per crate) and corrupt the file.

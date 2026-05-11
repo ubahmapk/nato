@@ -1,15 +1,18 @@
 [package]
-name = "nato-wasm"
-version = "0.1.0"
-edition = "2021"
+name              = "nato-wasm"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
 description = "WebAssembly bindings for the nato phonetic alphabet library"
-publish = false
+publish     = false
 
 [lib]
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-nato = { path = "../nato" }
-wasm-bindgen = "0.2"
-serde = { version = "1", features = ["derive"] }
+nato.workspace = true
+wasm-bindgen       = "0.2"
+serde              = { version = "1", features = ["derive"] }
 serde-wasm-bindgen = "0.6"

@@ -42,6 +42,11 @@ RUN xcaddy build \
 # ── Stage 4: Caddy serves static files + manages TLS ────────────────────────
 FROM caddy:alpine AS runtime
 
+# OCI labels link this image to the GitHub repository on GHCR
+LABEL org.opencontainers.image.source="https://github.com/ubahmapk/nato"
+LABEL org.opencontainers.image.description="NATO phonetic alphabet web app"
+LABEL org.opencontainers.image.licenses="MIT"
+
 COPY --from=caddy-builder /usr/bin/caddy /usr/bin/caddy
 COPY --from=web-builder /app/build /usr/share/caddy
 COPY web/Caddyfile /etc/caddy/Caddyfile

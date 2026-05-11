@@ -2,6 +2,17 @@
 members = ["crates/nato", "crates/nato-cli", "crates/nato-wasm"]
 resolver = "2"
 
+[workspace.package]
+version    = "0.1.0"
+edition    = "2021"
+authors    = ["Jon Mark Allen <ubahmapk@gmail.com>"]
+license    = "MIT"
+repository = "https://github.com/ubahmapk/nato"
+
+[workspace.dependencies]
+# version = "0.1" covers any compatible 0.1.x — required for crates.io publishing
+nato = { path = "crates/nato", version = "0.1" }
+
 # Size-optimize only the WASM crate; CLI keeps default release settings.
 [profile.release.package.nato-wasm]
 opt-level = "s"
