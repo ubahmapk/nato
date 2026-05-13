@@ -67,7 +67,7 @@ docker compose -f web/docker-compose.yml up -d
 | `AWS_ACCESS_KEY_ID` | Yes (prod) | IAM key for Route53 DNS-01 challenge |
 | `AWS_SECRET_ACCESS_KEY` | Yes (prod) | IAM secret |
 | `AWS_REGION` | No | Defaults to `us-east-1` |
-| `AWS_HOSTED_ZONE_ID` | No | Set to allow a stricter IAM policy (skips zone-discovery API calls) |
+| `AWS_HOSTED_ZONE_ID` | No | Skips zone-discovery API calls at runtime; speeds up certificate issuance |
 
 The `caddy_data` volume holds TLS certificates — do not delete it between
 restarts or Let's Encrypt rate limits may apply.
@@ -88,10 +88,6 @@ Then attach the printed policy ARN to the IAM role or user that the container au
 **Prefer an IAM role** (EC2 instance role or ECS task role) over static keys — no credentials
 need to appear in the environment. If you must use static keys, pass them via `AWS_ACCESS_KEY_ID`
 and `AWS_SECRET_ACCESS_KEY` in the compose env block.
-
-Once the policy is attached, set `AWS_HOSTED_ZONE_ID` in your environment (uncomment the line in
-`web/docker-compose.yml`) to scope the policy to a single hosted zone and skip the
-zone-discovery API calls (`ListHostedZonesByName`, `ListHostedZones`).
 
 ## Usage
 
