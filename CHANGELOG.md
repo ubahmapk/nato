@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.3] - 2026-05-13
 
+## [0.1.3] - 2026-05-13
+
 ### Added
 - AWS IAM policy document and creation script (`infrastructure/iam-caddy-route53.json`,
   `infrastructure/create-iam-policy.sh`) for granting Caddy the Route53 permissions needed
@@ -66,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- next-url -->
 [Unreleased]: https://github.com/ubahmapk/nato/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/ubahmapk/nato/releases/tag/v0.1.3
 [0.1.3]: https://github.com/ubahmapk/nato/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/ubahmapk/nato/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/ubahmapk/nato/releases/tag/v0.1.1
